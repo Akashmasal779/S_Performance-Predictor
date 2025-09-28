@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result | TechTitans</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="header">
+    <div class="header-left">
+      <img src="/static/images/logo.jpg" alt="TechTitans Logo" class="logo">
+    </div>
+    <div class="header-center">
+      <h1 class="main-title">🎓 Student Performance Predictor</h1>
+      <p><span style="font-size: 0.9em; color: #777;">by TechTitans</span></p>
+    </div>
+    <div class="header-center">
+      <h1 class="main-title">✨ Prediction Result</h1>
+    </div>
+    <div class="header-right">
+      <a href="{% url 'home' %}" class="nav-btn">Home</a>
+    </div>
+  </header>
+
+  <main class="form-container">
+    {% if prediction %}
+      <h2>📊 Predicted Performance: <span style="color: green;">{{ prediction }}</span></h2>
+    {% else %}
+      <h2>⚠️ No prediction result available.</h2>
+    {% endif %}
+  </main>
+
+  <footer>
+    <p>Project by <strong>TechTitans</strong></p>
+  </footer>
+
+</body>
+</html>

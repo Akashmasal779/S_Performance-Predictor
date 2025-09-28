@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Performance Predictor | TechTitans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script>
+    function handleInputChange() {
+      const csvFile = document.querySelector('input[name="csv_file"]');
+      const inputs = document.querySelectorAll('.form-group input:not([name="csv_file"]), .form-group select');
+      
+      const anyInputFilled = Array.from(inputs).some(input => input.value.trim() !== '');
+      csvFile.disabled = anyInputFilled;
+
+      csvFile.addEventListener('change', function () {
+        if (csvFile.files.length > 0) {
+          inputs.forEach(input => input.disabled = true);
+        } else {
+          inputs.forEach(input => input.disabled = false);
+        }
+      });
+    }
+
+    window.onload = function () {
+      const inputs = document.querySelectorAll('.form-group input, .form-group select');
+      inputs.forEach(input => input.addEventListener('input', handleInputChange));
+    };
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <img src="/static/images/logo.jpg" alt="TechTitans Logo" class="logo">
+    </div>
+    <div class="header-center">
+      <h1 class="main-title">🎓 Student Performance Predictor</h1>
+      <p><span style="font-size: 0.9em; color: #777;">by TechTitans</span></p>
+    </div>
+    <div class="header-right">
+      <a href="{% url 'home' %}" class="nav-btn">Home</a>
+      <a href="{% url 'about' %}" class="nav-btn">About</a>
+      <a href="{% url 'contact' %}" class="nav-btn">Contact</a>
+      <a href="{% url 'help' %}" class="nav-btn">Help</a>
+    </div>
+  </header>
+
+  <!-- Main Section -->
+  <main class="form-container">
+    <h2> Predict Student Performance</h2>
+    <p>Enter student details below <strong>or</strong> upload a CSV file (not both).</p>
+
+    <form method="POST" action="/predict" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <!-- Core Inputs -->
+      <div class="form-group">
+        <label>📘 Hours Studied:</label>
+        <input type="number" name="hours">
+      </div>
+      <div class="form-group">
+        <label>📈 Attendance (%):</label>
+        <input type="number" name="attendance">
+      </div>
+      <div class="form-group">
+        <label>📝 Internal Marks:</label>
+        <input type="number" name="internal">
+      </div>
+      <div class="form-group">
+        <label>🎯 Previous Result:</label>
+        <select name="previous">
+          <option value="">Select</option>
+          <option value="Pass">Pass</option>
+          <option value="Fail">Fail</option>
+        </select>
+      </div>
+
+      <!-- Optional Inputs -->
+      <div class="form-group">
+        <label>📊 Class Participation (%):</label>
+        <input type="number" name="participation">
+      </div>
+      <div class="form-group">
+        <label>📚 Assignment Completion (%):</label>
+        <input type="number" name="assignments">
+      </div>
+      <div class="form-group">
+        <label>🧠 IQ Score:</label>
+        <input type="number" name="iq">
+      </div>
+      <div class="form-group">
+        <label>📱 Phone Usage (hr/day):</label>
+        <input type="number" name="phone_usage">
+      </div>
+      <div class="form-group">
+        <label>🍽️ Sleep Hours/Day:</label>
+        <input type="number" name="sleep_hours">
+      </div>
+
+      <!-- CSV Upload -->
+      <div class="form-group">
+        <label>📂 Or Upload CSV:</label>
+        <input type="file" name="csv_file" accept=".csv">
+      </div>
+
+      <button type="submit" class="predict-btn">🚀 Predict Result</button>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>Project by <strong>TechTitans</strong> | Internship 2025</p>
+    <p>Team Members: <strong>Akash Masal, Rehan Maner, Omkar Thite, Ankita Sul</strong></p>
+  </footer>
+
+</body>
+</html>

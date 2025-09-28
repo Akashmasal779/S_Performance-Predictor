@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="result-container">
+    <h2>📢 Prediction Result</h2>
+
+    {% if csv_mode %}
+      <h3>Results from CSV:</h3>
+      <ul>
+        {% for res in predictions %}
+          <li>{{ res }}</li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p><strong>Predicted Result:</strong> {{ prediction }}</p>
+    {% endif %}
+
+    <a href="{{ url_for('home') }}" class="nav-btn">🔙 Go Back</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Help - Student Performance Predictor</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+   <header class="header">
+    <div class="header-left">
+      <img src="/static/images/logo.jpg" alt="TechTitans Logo" class="logo">
+    </div>
+    <div class="header-center">
+      <h1 class="main-title">🎓 Student Performance Predictor</h1>
+      <p><span style="font-size: 0.9em; color: #777;">by TechTitans</span></p>
+    </div>
+    <div class="header-right">
+      <a href="{% url 'home' %}" class="nav-btn">Home</a>
+      <a href="{% url 'about' %}" class="nav-btn">About</a>
+      <a href="{% url 'contact' %}" class="nav-btn">Contact</a>
+      <a href="{% url 'help' %}" class="nav-btn">Help</a>
+    </div>
+  </header>
+  <main>
+    <section>
+      <h2>🛠️ How to Use the System</h2>
+      <ol>
+        <li>Navigate to the <strong>Home</strong> page.</li>
+        <li>Upload your student dataset in <strong>CSV format</strong>.</li>
+        <li>Click on the <strong>Predict</strong> button to analyze performance.</li>
+        <li>View categorized results: <strong>Excellent</strong>, <strong>Average</strong>, or <strong>Needs Attention</strong>.</li>
+      </ol>
+
+      <h2>📋 Requirements</h2>
+      <ul>
+        <li>Dataset must include: <strong>Name</strong>, <strong>Marks</strong>, <strong>Attendance</strong>, and <strong>Behavior Score</strong>.</li>
+        <li>An active internet connection is required.</li>
+        <li>CSV file should be cleanly formatted (no missing columns or rows).</li>
+      </ul>
+
+      <h2>❓ Frequently Asked Questions (FAQs)</h2>
+      <p><strong>Q:</strong> Can this tool be used by non-technical teachers?<br>
+         <strong>A:</strong> Absolutely! The interface is user-friendly and easy to understand.</p>
+
+      <p><strong>Q:</strong> Is any data stored permanently?<br>
+         <strong>A:</strong> No. All data is processed temporarily and deleted after prediction.</p>
+
+      <p><strong>Q:</strong> What if the predictions seem incorrect?<br>
+         <strong>A:</strong> Please double-check that your dataset is accurate and complete. Prediction accuracy improves with better data.</p>
+    </section>
+  </main>
+</body>
+</html>

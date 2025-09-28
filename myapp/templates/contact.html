@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - Student Performance Predictor</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <img src="/static/images/logo.jpg" alt="TechTitans Logo" class="logo">
+    </div>
+    <div class="header-center">
+      <h1 class="main-title">🎓 Student Performance Predictor</h1>
+      <p><span style="font-size: 0.9em; color: #777;">by TechTitans</span></p>
+    </div>
+    <div class="header-right">
+      <a href="{% url 'home' %}" class="nav-btn">Home</a>
+      <a href="{% url 'about' %}" class="nav-btn">About</a>
+      <a href="{% url 'contact' %}" class="nav-btn">Contact</a>
+      <a href="{% url 'help' %}" class="nav-btn">Help</a>
+    </div>
+  </header>
+<form method="post" action="{% url 'contact' %}">
+  {% csrf_token %}
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="email">Your Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="message">Your Message:</label>
+  <textarea id="message" name="message" rows="5" required></textarea>
+
+  <input type="submit" value="Send Message" class="submit-btn">
+</form>
+
+{% if success %}
+  <p style="color: green;">✅ Your message was sent successfully!</p>
+{% elif error %}
+  <p style="color: red;">❌ {{ error }}</p>
+{% endif %}
+
+  <main>
+    <section class="contact-section">
+      <h2>Need Help or Have Feedback?</h2>
+      <p>If you have any questions, feedback, or suggestions, feel free to reach out to us using the contact form below.</p>
+
+      <h3>Contact Form</h3>
+      <form action="mailto:officialedimaxstudio@gmail.com" method="post" enctype="text/plain">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <input type="submit" value="Send Message" class="submit-btn">
+      </form>
+    </section>
+
+    <section class="team-section">
+      <h3>Team Members</h3>
+      <ul>
+        <li>Akash Balu Masal</li>
+        <li>Rehan Asif Maner</li>
+        <li>Omkar Namdeo Thite</li>
+        <li>Ankita Suresh Sul</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

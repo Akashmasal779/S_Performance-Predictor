@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About - Student Performance Predictor</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+   <header class="header">
+    <div class="header-left">
+      <img src="/static/images/logo.jpg" alt="TechTitans Logo" class="logo">
+    </div>
+    <div class="header-center">
+      <h1 class="main-title">🎓 Student Performance Predictor</h1>
+      <p><span style="font-size: 0.9em; color: #777;">by TechTitans</span></p>
+    </div>
+    <div class="header-right">
+      <a href="{% url 'home' %}" class="nav-btn">Home</a>
+      <a href="{% url 'about' %}" class="nav-btn">About</a>
+      <a href="{% url 'contact' %}" class="nav-btn">Contact</a>
+      <a href="{% url 'help' %}" class="nav-btn">Help</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section>
+      <h2>Overview</h2>
+      <p>
+        The <strong>Student Performance Predictor</strong> is an AI-powered web tool that helps teachers analyze and predict a student's academic progress. It uses data like <strong>marks, attendance, and behavior</strong> to generate insights and performance predictions.
+      </p>
+
+      <h2>Why We Built This</h2>
+      <p>
+        Many students struggle silently due to lack of timely intervention. Our goal is to help educators take action earlier using accurate AI insights. This promotes a more personalized and effective teaching approach.
+      </p>
+
+      <h2>Key Features</h2>
+      <ul>
+        <li>Predicts performance levels: Excellent, Average, Needs Attention</li>
+        <li>User-friendly dashboard for teachers</li>
+        <li>Easy data upload (CSV format)</li>
+        <li>Improves accuracy with more data over time</li>
+      </ul>
+
+      <h2>Technologies Used</h2>
+      <ul>
+        <li>Python, Django – for AI logic and backend development</li>
+        <li>HTML, CSS – for frontend design</li>
+        <li>Machine Learning – for prediction and model training</li>
+        <li>CSV/Excel – for data input</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>Project by <strong>TechTitans</strong> | Internship 2025</p>
+    <p>Team Members: <strong>Akash Masal, Rehan Maner, Omkar Thite, Ankita Sul</strong></p>
+  </footer>
+
+</body>
+</html>
